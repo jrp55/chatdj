@@ -20,7 +20,7 @@ RUN apt-get update && apt-get install -y libre2-dev && \
     rm -rf /var/lib/apt/lists/*
 
 COPY *.py ./
-COPY templates ./
+COPY templates ./templates
 
 EXPOSE ${PORT}
 
