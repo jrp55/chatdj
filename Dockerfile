@@ -1,4 +1,9 @@
+ARG PORT=5000
+
 FROM python:3.10
+
+ARG PORT=5000
+ENV PORT=${PORT}
 
 WORKDIR /usr/src/app
 
@@ -13,6 +18,6 @@ RUN apt-get update && apt-get install -y libre2-dev && \
 
 COPY . .
 
-EXPOSE 5000
+EXPOSE ${PORT}
 
-CMD ["flask", "run", "--host=0.0.0.0"]
+CMD ["sh", "-c", "gunicorn -w 2 -b 0.0.0.0:$PORT 'app:app'"]
