@@ -10,10 +10,11 @@ from logging import Logger
 PlaylistCreationDetails = namedtuple('PlaylistCreationDetails', ['id', 'external_url'])
 
 class SpotifyClient(object):
-    def __init__(self, client_id: str, client_secret: str, logger: Logger):
+    def __init__(self, client_id: str, client_secret: str, redirect_uri: str, logger: Logger):
         self._client_id = client_id
         self._client_secret = client_secret
         self._access_token = None
+        self._redirect_uri = redirect_uri
         self.logger = logger
 
         self._client_authorization = b64encode(bytes(f'{self._client_id}:{self._client_secret}', 'utf-8')).decode('utf-8')
@@ -25,6 +26,10 @@ class SpotifyClient(object):
     @property
     def client_authorization(self):
         return self._client_authorization
+
+    @property
+    def redirect_uri(self):
+        return self._redirect_uri
     
     @property
     def access_token(self):
@@ -50,7 +55,7 @@ class SpotifyClient(object):
         payload = {
             'grant_type': 'authorization_code',
             'code': code,
-            'redirect_uri': 'http://localhost:5000/create_playlist'
+            'redirect_uri': self.redirect_uri
         }
         headers = {
             'Authorization': f'Basic {self.client_authorization}',

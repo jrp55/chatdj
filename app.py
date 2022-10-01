@@ -21,6 +21,7 @@ app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 
 CLIENT_ID = 'e3bcb9c19d2b46259687ee8ec7cc2528'
 CLIENT_SECRET = os.environ['CLIENT_SECRET']
+REDIRECT_URI = os.environ['REDIRECT_URI']
 
 @app.route('/')
 def index():
@@ -36,7 +37,7 @@ def get_permissions():
     https://developer.spotify.com/documentation/general/guides/authorization/code-flow/
     """
     state = ''.join(random.choice(string.ascii_letters) for x in range(16))
-    return redirect(f'https://accounts.spotify.com/authorize?client_id={CLIENT_ID}&response_type=code&redirect_uri=http://localhost:5000/create_playlist&state={state}&scope=playlist-modify-private%20playlist-modify-public')
+    return redirect(f'https://accounts.spotify.com/authorize?client_id={CLIENT_ID}&response_type=code&redirect_uri={REDIRECT_URI}&state={state}&scope=playlist-modify-private%20playlist-modify-public')
 
 @app.route('/create_playlist', methods=['GET', 'POST'])
 def create_playlist():
@@ -46,7 +47,7 @@ def create_playlist():
     if request.method == 'POST':
         # POST request, create and populate the playlist
         app.logger.info('Hello')
-        spotify_client = SpotifyClient(CLIENT_ID, CLIENT_SECRET, app.logger)
+        spotify_client = SpotifyClient(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, app.logger)
         app.logger.info('Created spotify client')
         playlist_input = PlaylistInput.from_flask_request(request, app.logger)
         app.logger.info('Created playlist input')
