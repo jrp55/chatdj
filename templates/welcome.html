@@ -13,7 +13,18 @@
         <!--<script src="" async defer></script>-->
         <div>
             <p>This tool creates a playlist by detecting Spotify links in your submitted text file.</p>
-            <p>But first, we'll need some permissions from Spotify...</p>
+            <p>Because this will create things against your Spotify account, some permissions are required:</p>
+            <ul>
+                <li>"<strong>View your Spotify account data</strong>: Your name and username, your profile picture, how many followers you have on Spotify and your public playlists" - I believe any app linking to a Spotify account requires this.</li>
+                <li>"<strong>Take actions in Spotify on your behalf</strong>: Create, edit, and follow private playlists & Create, edit, and follow playlists" - this tool requests the <a href="https://developer.spotify.com/documentation/general/guides/authorization/scopes/#playlist-modify-private">playlist-modify-private</a> and <a href="https://developer.spotify.com/documentation/general/guides/authorization/scopes/#playlist-modify-public">playlist-modify-public</a> scopes in order to create and add tracks to public and private playlists on your account.</li>
+            </ul>
+        </div>
+        <div>
+            <h2>What does this do, exactly?</h2>
+            <p>You provide some parameters to create a playlist with, e.g. a name and description. Along with this, you upload a text file. The tool will detect Spotify track links within the text and create a playlist with those tracks in.</p>
+            <p>It does not look for <em>anything</em> else within your submitted text file, or use any other Spotify endpoints beyond those required to complete this simple task.</p>
+            <p>See the code at <a href="https://github.com/jrp55/chatdj">my Github repository</a>.</p>
+            <p>Runs on <a href="https://railway.app/">railway.app</a>.</p>
         </div>
         <div>
             <p>If you're happy to go ahead, <a href="{{ url_for('get_permissions') }}">hit this link to get started.</a></p>
