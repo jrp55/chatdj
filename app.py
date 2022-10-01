@@ -64,7 +64,6 @@ def create_playlist():
             name=playlist_input.name,
             description=playlist_input.description,
             visibility=playlist_input.visibility.to_str(),
-            collab=str(playlist_input.collaborative),
             playlist_url=playlist_url
         )
     elif request.method == 'GET':
