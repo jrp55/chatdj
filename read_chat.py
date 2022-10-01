@@ -1,4 +1,4 @@
-import re
+import re2 as re
 import os
 from typing import Generator
 from collections import namedtuple
