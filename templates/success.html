@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>ChatDJ: Create Playlist Success</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--<link rel="stylesheet" href="">-->
+    </head>
+    <body>
+        <h1>Success!</h1>
+        <!--<script src="" async defer></script>-->
+        <div>
+            <p>Details:</p>
+            <ul>
+                <li>Detected {{ num_tracks }} Spotify tracks</li>
+                <li>Name = {{ name }}</li>
+                <li>Description = {{ description }}</li>
+                <li>Collaborative = {{ collab }}</li>
+                <li><a href="{{ playlist_url }}">Link to playlist</a></li>
+            </ul>
+        </div>
+        <div>
+            <p><a href="{{ url_for('index') }}">Do it agaaain</a></p>
+        </div>
+    </body>
+</html>

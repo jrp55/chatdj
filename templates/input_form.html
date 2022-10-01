@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>ChatDJ: Input</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--<link rel="stylesheet" href="">-->
+    </head>
+    <body>
+        <h1>Create a Playlist</h1>
+        <!--<script src="" async defer></script>-->
+        <form method="post" name="playlist_form" action="{{ url_for('create_playlist') }}" enctype="multipart/form-data">
+            <div>
+                <label for="playlist_name">Name</label>
+                <input type="text" id="playlist_name" name="playlist_name" required />
+            </div>
+            <div>
+                <label for="playlist_desc">Description</label>
+                <input type="text" id="playlist_desc" name="playlist_desc" required />
+            </div>
+            <div>
+                <label for="playlist_visibility">Visibility</label>
+                <select name="playlist_visibility" required>
+                    <option value="Private">Private</option>
+                    <option value="Public">Public</option>
+                </select>
+            </div>
+            <div>
+                <label for="playlist_chat">Chat log</label>
+                <input type="file" id="playlist_chat" name="playlist_chat" accept="text/plain;charset=UTF_8" required>
+            </div>
+            <input type="hidden" name="access_code" value="{{ access_code }}" />
+            <div>
+                <input type="submit" value="Create Playlist" />
+            </div>
+        </form>
+    </body>
+</html>
