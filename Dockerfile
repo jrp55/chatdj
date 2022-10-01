@@ -1,9 +1,12 @@
 ARG PORT=5000
+ARG REDIRECT_URI
 
-FROM python:3.10
+FROM python:3.10-bullseye
 
 ARG PORT=5000
+ARG REDIRECT_URI
 ENV PORT=${PORT}
+ARG REDIRECT_URI=${REDIRECT_URI}
 
 WORKDIR /usr/src/app
 
@@ -16,7 +19,8 @@ RUN apt-get update && apt-get install -y libre2-dev && \
     apt-get purge -y libre2-dev && \
     rm -rf /var/lib/apt/lists/*
 
-COPY . .
+COPY *.py ./
+COPY templates ./
 
 EXPOSE ${PORT}
 
