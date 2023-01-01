@@ -2,3 +2,6 @@ __pycache__
 venv
 test_data
 .env
+.tox
+build
+templates.egg-info

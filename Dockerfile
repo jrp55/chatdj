@@ -1,7 +1,7 @@
 ARG PORT=5000
 ARG REDIRECT_URI
 
-FROM python:3.10-bullseye
+FROM python:3.11-bullseye
 
 ARG PORT=5000
 ARG REDIRECT_URI
@@ -19,7 +19,7 @@ RUN apt-get update && apt-get install -y libre2-dev && \
     apt-get purge -y libre2-dev && \
     rm -rf /var/lib/apt/lists/*
 
-COPY *.py ./
+COPY src/chatdj/*.py ./
 COPY templates ./templates
 
 EXPOSE ${PORT}

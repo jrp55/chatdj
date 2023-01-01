@@ -1,5 +1,6 @@
 from enum import Enum, auto
 
+
 class PlaylistVisibility(Enum):
     Private = auto()
     Public = auto()
